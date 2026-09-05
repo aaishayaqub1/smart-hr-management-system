@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notifications | Smart HR</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #0a3d62, #3c6382);
+            color: white;
+            margin: 0; padding: 0;
+        }
+        .navbar {
+            padding: 15px 30px;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            backdrop-filter: blur(5px);
+        }
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            background: rgba(255,255,255,0.15);
+            padding: 25px;
+            border-radius: 12px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            color: black;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid gray;
+        }
+        th {
+            background: #3c6382;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <h2>Notifications</h2>
+    <a href="/hr" style="color:white">Back</a>
+</div>
+
+<div class="container">
+    <h2>System Notifications</h2>
+    {% if notes %}
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Message</th>
+            <th>Time</th>
+        </tr>
+        {% for n in notes %}
+        <tr>
+            <td>{{ n[0] }}</td>
+            <td>{{ n[1] }}</td>
+            <td>{{ n[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No notifications available.</p>
+    {% endif %}
+</div>
+
+</body>
+</html>

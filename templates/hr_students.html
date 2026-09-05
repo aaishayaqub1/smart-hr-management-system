@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HR | Students</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #0a3d62, #3c6382);
+            color: white;
+            font-family: Arial;
+        }
+        .container { width: 90%; margin:auto; padding:30px; }
+        table {
+            width:100%; background:rgba(255,255,255,0.15);
+            border-collapse: collapse; border-radius:10px;
+            overflow:hidden;
+        }
+        th,td { padding:12px; border-bottom:1px solid rgba(255,255,255,0.2); }
+        th { background:rgba(255,255,255,0.2); }
+        a.btn {
+            color:white; text-decoration:none;
+            padding:6px 12px; background:#4a69bd;
+            border-radius:6px;
+        }
+        a.btn:hover { background:#1e3799; }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>All Students</h1>
+
+    {% if students %}
+    <table>
+        <tr>
+            <th>ID</th><th>Name</th><th>Email</th><th>GPA</th>
+            <th>Branch</th><th>Skills</th><th>Actions</th>
+        </tr>
+
+        {% for s in students %}
+        <tr>
+            <td>{{ s[0] }}</td>
+            <td>{{ s[1] }}</td>
+            <td>{{ s[2] }}</td>
+            <td>{{ s[6] }}</td>
+            <td>{{ s[5] }}</td>
+            <td>{{ s[7] }}</td>
+            <td>
+                <a class="btn" href="/hr/delete_student/{{ s[0] }}">Delete</a>
+                <a class="btn" href="/hr/download_resume/{{ s[0] }}">Download PDF</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+    <p>No student profiles found.</p>
+    {% endif %}
+</div>
+
+</body>
+</html>

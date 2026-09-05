@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HR | Job Postings</title>
+    <style>
+        body { background: linear-gradient(to right,#0a3d62,#3c6382); color:white; font-family:Arial; }
+        .container { width:90%; margin:auto; padding:30px; }
+        table {
+            width:100%; background:rgba(255,255,255,0.15);
+            border-collapse:collapse; border-radius:10px; overflow:hidden;
+        }
+        th,td { padding:12px; border-bottom:1px solid rgba(255,255,255,0.2); }
+        th { background:rgba(255,255,255,0.2); }
+
+        a.btn {
+            padding:6px 12px; background:#4a69bd; color:white;
+            text-decoration:none; border-radius:5px;
+        }
+        a.btn:hover { background:#1e3799; }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>All Job Postings</h1>
+
+    <table>
+        <tr>
+            <th>ID</th><th>Company</th><th>Position</th>
+            <th>Min GPA</th><th>Skills</th><th>Actions</th>
+        </tr>
+
+        {% for j in jobs %}
+        <tr>
+            <td>{{ j[0] }}</td>
+            <td>{{ j[1] }}</td>
+            <td>{{ j[2] }}</td>
+            <td>{{ j[3] }}</td>
+            <td>{{ j[4] }}</td>
+            <td><a class="btn" href="/hr/delete_job/{{ j[0] }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>

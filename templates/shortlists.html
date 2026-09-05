@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shortlisted Candidates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #0a3d62, #3c6382);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            margin: 40px auto;
+            background: rgba(255,255,255,0.12);
+            padding: 20px;
+            border-radius: 12px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+        }
+        th, td {
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 12px;
+            text-align: center;
+        }
+        th { background: rgba(255,255,255,0.2); }
+        a.btn {
+            padding: 10px 15px;
+            background: #1e90ff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+        a.btn:hover { background: #0a79d1; }
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+        .back:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Shortlisted Candidates for "{{ job[0] }}"</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Branch</th>
+            <th>GPA</th>
+            <th>Skills</th>
+        </tr>
+
+        {% for c in candidates %}
+        <tr>
+            <td>{{ c[0] }}</td>
+            <td>{{ c[1] }}</td>
+            <td>{{ c[2] }}</td>
+            <td>{{ c[3] }}</td>
+            <td>{{ c[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a class="btn" href="/recruiter">Back</a>
+</div>
+
+</body>
+</html>

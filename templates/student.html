@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard | Smart HR</title>
+    <style>
+        body {
+            margin: 0; padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #0a3d62, #3c6382);
+            color: white;
+        }
+        .navbar {
+            background: rgba(255,255,255,0.1);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            backdrop-filter: blur(6px);
+        }
+        .navbar h2 { margin: 0; }
+        .navbar a {
+            color: white;
+            padding: 8px 14px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .navbar a:hover { background: rgba(255,255,255,0.2); }
+
+        .container { width: 85%; margin: auto; padding: 30px; }
+
+        .box {
+            background: rgba(255,255,255,0.15);
+            padding: 25px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: none;
+            margin-top: 10px;
+        }
+        button {
+            background: #38ada9;
+            color: white;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover { background: #78e08f; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        th { background: rgba(255,255,255,0.2); }
+
+        a.action {
+            color: white;
+            padding: 6px 12px;
+            background: #1e3799;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+        a.action:hover { background: #4a69bd; }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <h1>Smart HR Management System</h1>
+    <a href="/logout">Logout</a>
+</div>
+
+<div class="container">
+
+    <h1>Welcome, Student !</h1>
+
+    <!-- EMAIL VERIFICATION -->
+    {% if not verified_email %}
+    <div class="box">
+        <h3>Verify Your Email to View Your Resume</h3>
+        <form method="POST">
+            <label>Enter your registered email:</label>
+            <input type="email" name="email" required>
+            <button type="submit">Verify</button>
+        </form>
+    </div>
+    {% endif %}
+
+    <!-- RESUME INFO -->
+    {% if student %}
+    <div class="box">
+        <h2>Your Uploaded Resume Info</h2>
+
+        <p><strong>Name:</strong> {{ student[0] }}</p>
+        <p><strong>Email:</strong> {{ student[1] }}</p>
+        <p><strong>Desired Position:</strong> {{ student[2] }}</p>
+        <p><strong>Desired Company:</strong> {{ student[3] }}</p>
+        <p><strong>Branch:</strong> {{ student[4] }}</p>
+        <p><strong>GPA:</strong> {{ student[5] }}</p>
+        <p><strong>Skills:</strong> {{ student[6] }}</p>
+
+        <a class="action" href="{{ url_for('add_student_info') }}">Update Resume</a>
+        <a class="action" href="{{ url_for('delete_student_info') }}">Delete Resume</a>
+    </div>
+    {% endif %}
+
+    <!-- IF STUDENT HAS NOT ADDED PROFILE -->
+    {% if verified_email and not student %}
+    <div class="box">
+        <h3>No resume found for this email.</h3>
+        <a class="action" href="{{ url_for('add_student_info') }}">Create Resume</a>
+    </div>
+    {% endif %}
+
+    <!-- JOB OPPORTUNITIES -->
+    {% if student %}
+    <div class="box">
+        <h2>Eligible Job Opportunities</h2>
+
+        {% if jobs %}
+        <table>
+            <tr>
+                <th>Position</th>
+                <th>Company</th>
+                <th>Min GPA</th>
+                <th>Skills Required</th>
+            </tr>
+
+            {% for j in jobs %}
+            <tr>
+                <td>{{ j[2] }}</td>
+                <td>{{ j[1] }}</td>
+                <td>{{ j[3] }}</td>
+                <td>{{ j[4] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>No eligible job matches found.</p>
+        {% endif %}
+
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>

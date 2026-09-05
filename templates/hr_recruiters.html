@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HR | Recruiters</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #0a3d62, #3c6382);
+            color: white; font-family: Arial;
+        }
+        .container { width:90%; margin:auto; padding:30px; }
+        table {
+            width:100%; border-collapse: collapse;
+            background:rgba(255,255,255,0.15);
+            border-radius:10px;
+            overflow:hidden;
+        }
+        th,td { padding:12px; border-bottom:1px solid rgba(255,255,255,0.2); }
+        th { background:rgba(255,255,255,0.2); }
+
+        a.btn {
+            padding:6px 12px; border-radius:6px;
+            background:#4a69bd; color:white; text-decoration:none;
+        }
+        a.btn:hover { background:#1e3799; }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>All Recruiters</h1>
+
+    <table>
+        <tr>
+            <th>ID</th><th>Company</th><th>Email</th><th>Actions</th>
+        </tr>
+
+        {% for r in recruiters %}
+        <tr>
+            <td>{{ r[0] }}</td>
+            <td>{{ r[1] }}</td>
+            <td>{{ r[2] }}</td>
+            <td>
+                <a class="btn" href="/hr/delete_recruiter/{{ r[0] }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>

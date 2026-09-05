@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HR Reports & Analytics | Smart HR</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #0a3d62, #3c6382);
+            color: white;
+        }
+
+        .navbar {
+            background: rgba(255,255,255,0.1);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            backdrop-filter: blur(5px);
+        }
+
+        .navbar h2 {
+            margin: 0;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 7px 14px;
+            border-radius: 5px;
+        }
+
+        .navbar a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 40px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .stats-box {
+            background: rgba(255,255,255,0.15);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+        }
+
+        .stats-box:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-4px);
+        }
+
+        .stats-box h2 {
+            margin: 0 0 10px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .back-btn {
+            margin-top: 40px;
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <h2>Smart HR Management System</h2>
+    <a href="/hr">Back to Dashboard</a>
+</div>
+
+<div class="container">
+    <h1 class="title">📊 HR Analytics & Reports</h1>
+
+    <div class="stats-grid">
+
+        <div class="stats-box">
+            <h2>Total Students</h2>
+            <p>{{ total_students }}</p>
+        </div>
+
+        <div class="stats-box">
+            <h2>Total Recruiters</h2>
+            <p>{{ total_recruiters }}</p>
+        </div>
+
+        <div class="stats-box">
+            <h2>Total Job Postings</h2>
+            <p>{{ total_jobs }}</p>
+        </div>
+
+        <div class="stats-box">
+            <h2>Eligible Candidates (GPA ≥ 7.0)</h2>
+            <p>{{ eligible_candidates }}</p>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

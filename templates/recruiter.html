@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart HR | Recruiter Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #0a3d62, #3c6382);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background: rgba(255,255,255,0.1);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(6px);
+        }
+        .navbar h2 { margin: 0; font-size: 24px; }
+        .nav-links a {
+            margin-left: 15px;
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { background: rgba(255,255,255,0.2); }
+
+        .container {
+            width: 85%;
+            margin: 30px auto;
+            background: rgba(255,255,255,0.12);
+            padding: 25px;
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+        }
+        th, td {
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background: rgba(255,255,255,0.2);
+            font-size: 16px;
+        }
+        .btn {
+            padding: 8px 14px;
+            background: #1e90ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+        .btn:hover { background: #0a79d1; }
+
+        footer {
+            margin-top: 40px;
+            padding: 15px;
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <h2>Smart HR - Recruiter Panel</h2>
+    <div class="nav-links">
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Welcome, Recruiter</h1>
+
+    <a class="btn" href="/add_job">+ Add New Job</a>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Company</th>
+            <th>Position</th>
+            <th>Min GPA</th>
+            <th>Required Skills</th>
+            <th>Shortlist</th>
+        </tr>
+
+        {% for job in jobs %}
+        <tr>
+            <td>{{ job[0] }}</td>
+            <td>{{ job[1] }}</td>
+            <td>{{ job[2] }}</td>
+            <td>{{ job[3] }}</td>
+            <td>{{ job[4] }}</td>
+            <td>
+                <a class="btn" href="/shortlists/{{ job[0] }}">View</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<footer>
+    © 2025 Smart HR Management System
+</footer>
+
+</body>
+</html>

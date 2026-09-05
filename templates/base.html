@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title if title else "Smart HR Management System" }}</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #0a3d62, #3c6382);
+            color: #fff;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            backdrop-filter: blur(6px);
+        }
+        .navbar h2 { margin: 0; }
+        .nav-links a {
+            color: #fff;
+            margin-left: 15px;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.15);
+            transition: 0.3s;
+        }
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .container {
+            width: 85%;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 10px;
+            backdrop-filter: blur(6px);
+        }
+
+        h1, h2, h3, p { margin: 10px 0; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        th { background: rgba(255,255,255,0.2); }
+
+        .button {
+            display: inline-block;
+            padding: 8px 14px;
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.2s;
+        }
+        .button:hover { background: rgba(255,255,255,0.35); }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(4px);
+        }
+
+        input, select, textarea {
+            padding: 10px;
+            width: 95%;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .menu-card {
+            display: inline-block;
+            width: 260px;
+            padding: 25px;
+            margin: 15px;
+            background: rgba(255,255,255,0.17);
+            border-radius: 10px;
+            backdrop-filter: blur(4px);
+            transition: 0.3s;
+            cursor: pointer;
+            color: white;
+            text-decoration: none;
+        }
+        .menu-card:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-5px);
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="navbar">
+    <h2>Smart HR Management System</h2>
+
+    <div class="nav-links">
+        {% if session.get("role") == "student" %}
+            <a href="/student">Dashboard</a>
+        {% elif session.get("role") == "recruiter" %}
+            <a href="/recruiter">Dashboard</a>
+        {% elif session.get("role") == "hr" %}
+            <a href="/hr">Dashboard</a>
+        {% endif %}
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<footer>
+    © 2025 Smart HR Management System
+</footer>
+
+</body>
+</html>

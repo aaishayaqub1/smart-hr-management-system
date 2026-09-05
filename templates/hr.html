@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HR Dashboard | Smart HR</title>
+    <style>
+        body {
+            margin: 0; padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #0a3d62, #3c6382);
+            color: white;
+        }
+        .navbar {
+            background: rgba(255,255,255,0.1);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            backdrop-filter: blur(5px);
+        }
+        .navbar h2 { margin: 0; }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 7px 14px;
+            border-radius: 5px;
+        }
+        .navbar a:hover { background: rgba(255,255,255,0.2); }
+
+        .container { width: 85%; margin: auto; padding: 40px; }
+        .menu-card {
+            display: inline-block;
+            width: 260px;
+            padding: 25px;
+            margin: 15px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+        }
+        .menu-card:hover { transform: translateY(-6px); background: rgba(255,255,255,0.25); }
+
+        a.card-link { text-decoration: none; color: white; }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <h2>Smart HR Management System</h2>
+    <a href="/logout">Logout</a>
+</div>
+
+<div class="container">
+    <h1>Welcome, HR</h1>
+
+    <a class="card-link" href="/hr/students">
+        <div class="menu-card">
+            <h3>Manage Students</h3>
+            <p>View & Delete Student Records</p>
+        </div>
+    </a>
+
+    <a class="card-link" href="/hr/recruiters">
+        <div class="menu-card">
+            <h3>Manage Recruiters</h3>
+            <p>View & Delete Recruiters</p>
+        </div>
+    </a>
+
+    <a class="card-link" href="/hr/jobs">
+        <div class="menu-card">
+            <h3>Job Postings</h3>
+            <p>View & Delete All Job Listings</p>
+        </div>
+    </a>
+
+    <!-- 🔥 FIXED: Reports link -->
+   <a class="card-link" href="/hr/reports">
+    <div class="menu-card">
+        <h3>Reports & Stats</h3>
+        <p>Analytics of system usage</p>
+    </div>
+</a>
+
+
+    <!-- 🔥 FIXED: Notifications link -->
+   <a class="card-link" href="/hr/notifications">
+        <div class="menu-card">
+            <h3>Notifications</h3>
+            <p>See system activity alerts</p>
+        </div>
+    </a>
+</div>
+
+</body>
+</html>
